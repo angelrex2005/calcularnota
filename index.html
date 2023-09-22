@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Nota</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        input{
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px;
+        }
+        button{
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Calculadora de Nota</h1>
+    <form id="notaForm">
+        <label for="nota_periodo1">Nota del primer periodo:</label><br>
+        <input type="number" id="nota_periodo1" step="0.1" min="0.0" max="5.0"><br>
+
+        <label for="nota_periodo2">Nota del segundo periodo:</label><br>
+        <input type="number" id="nota_periodo2" step="0.1" min="0.0" max="5.0"><br>
+
+        <label for="nota_periodo3">Nota del tercer periodo:</label><br>
+        <input type="number" id="nota_periodo3" step="0.1" min="0.0" max="5.0"><br>
+
+        <button type="button" onclick="calcularNota()">Calcular Nota</button>
+    </form>
+
+    <p>Para obtener un promedio final de 3.3, necesitas una nota de: <h3><span id="nota_periodo4"></span></h3> <br>en el cuarto periodo.</p>
+</center>
+    <script>
+        function calcularNota() {
+            // Obtener las notas de los tres primeros periodos
+            var nota_periodo1 = parseFloat(document.getElementById("nota_periodo1").value);
+            var nota_periodo2 = parseFloat(document.getElementById("nota_periodo2").value);
+            var nota_periodo3 = parseFloat(document.getElementById("nota_periodo3").value);
+
+            // Calcular la nota necesaria en el cuarto periodo para obtener un promedio final de 3.3
+            var nota_periodo4 = (3.3 - 0.2 * nota_periodo1 - 0.2 * nota_periodo2 - 0.3 * nota_periodo3) / 0.3;
+
+            // Mostrar la nota necesaria en la página
+            document.getElementById("nota_periodo4").textContent = nota_periodo4.toFixed(2);
+        }
+    </script>
+</body>
+</html>
